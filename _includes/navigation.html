@@ -1,0 +1,25 @@
+<nav class="site-navigation">
+    <ul class="nav-menu">
+        {% for item in site.navigation %}
+        <li class="nav-item {% if page.url == item.url %}active{% endif %}">
+            <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <span class="hamburger"></span>
+    </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu">
+    <ul class="mobile-nav-menu">
+        {% for item in site.navigation %}
+        <li class="mobile-nav-item {% if page.url == item.url %}active{% endif %}">
+            <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

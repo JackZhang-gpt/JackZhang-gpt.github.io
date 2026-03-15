@@ -1,0 +1,12 @@
+<div class="sidebar-content">
+    <!-- Profile sidebar -->
+    {% include profile.html %}
+
+    <!-- Table of Contents for current page (optional) -->
+    {% if page.toc %}
+    <div class="toc-sidebar">
+        <h3>On This Page</h3>
+        {% include toc.html html=content %}
+    </div>
+    {% endif %}
+</div>

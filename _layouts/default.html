@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>
+        {% if page.title %}
+            {{ page.title }} | {{ site.title }}
+        {% else %}
+            {{ site.title }}
+        {% endif %}
+    </title>
+
+    <!-- SEO -->
+    {% seo %}
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+    <!-- MathJax (if enabled) -->
+    {% if site.academic.mathjax %}
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    {% endif %}
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/atom.xml' | relative_url }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        {% include header.html %}
+
+        <!-- Navigation -->
+        {% include navigation.html %}
+
+        <div class="main-content">
+            <!-- Sidebar (left or right based on config) -->
+            {% if site.academic.sidebar_position == "left" %}
+            <aside class="sidebar sidebar-left">
+                {% include sidebar.html %}
+            </aside>
+            {% endif %}
+
+            <!-- Main article/content -->
+            <article class="content">
+                {{ content }}
+            </article>
+
+            <!-- Sidebar right if configured -->
+            {% if site.academic.sidebar_position == "right" %}
+            <aside class="sidebar sidebar-right">
+                {% include sidebar.html %}
+            </aside>
+            {% endif %}
+        </div>
+
+        <!-- Footer -->
+        {% include footer.html %}
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+    <!-- Table of Contents Script -->
+    {% if page.toc %}
+    <script>
+        // Initialize table of contents
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof window.initTOC === 'function') {
+                window.initTOC();
+            }
+        });
+    </script>
+    {% endif %}
+</body>
+</html>

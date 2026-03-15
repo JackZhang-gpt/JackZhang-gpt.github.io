@@ -1,0 +1,110 @@
+# Jekyll Configuration for Academic Style Blog
+# Site settings
+title: "Jack Zhang"
+description: "PhD in particle physics | LLM & AI for Science | Quantum sensing"
+baseurl: "" # the subpath of your site, e.g. "/blog"
+url: "" # the base hostname & protocol for your site, e.g. "https://example.com"
+email: "jackzhang.phys@gmail.com"
+github_username: "JackZhang-gpt"
+
+# Academic style settings
+academic:
+  sidebar_position: "left" # left or right
+  table_of_contents: true
+  toc_depth: 3
+  mathjax: true # Enable MathJax for mathematical notation
+  print_styles: true
+
+# Profile settings
+profile:
+  name: "Jack Zhang"
+  title: "PhD. in Physics, former member of the ATLAS experiment at CERN, passionate about LLM, AI4S and quantitative finance"
+  bio: ""
+  location: "Shanghai, China"
+  email: "jackzhang.phys@gmail.com"
+  github: "https://github.com/JackZhang-gpt"
+  profile_image: "/assets/images/me.png"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+timezone: Asia/Shanghai
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  notes:
+    output: true
+    permalink: /notes/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "notes"
+    values:
+      layout: "post"
+      toc: true
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      toc: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: "assets"
+    values:
+      output: true
+
+# Navigation
+navigation:
+  - title: "Researches"
+    url: /research/
+  - title: "Notes"
+    url: /notes/
+
+# Kramdown settings
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..3
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+
+# Rouge syntax highlighting
+rouge:
+  css_class: 'highlight'
+  theme: "academic" 
+
+# Sitemap settings
+sitemap:
+  changefreq: weekly
+  priority: 0.5
+
+# Feed settings
+feed:
+  posts_limit: 20
+  path: atom.xml
